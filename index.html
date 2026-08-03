@@ -18,27 +18,130 @@ html, body {
     background: #050505;
     color: white;
     overflow-x: hidden;
+    scroll-behavior: smooth;
 }
 
 body {
     display: flex;
     flex-direction: column;
+    background-attachment: fixed;
+    background:
+    linear-gradient(
+        90deg,
+        transparent,
+        rgba(174, 0, 255, 0.15),
+        transparent
+    );
 }
 
+
+
+.header {
+    display: flex;
+    padding: 0px;
+    justify-content: center;
+    align-items: center;
+    position:  relative;
+    height: 0;
+    z-index: 1;
+}
+
+.header h1 {
+    font-size: clamp(45px,4vw,60px);
+    margin:0;
+    letter-spacing:-3px;
+    margin-bottom: -100px;
+}
+
+/* STICKY NAV */
+
+.top-nav{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:64px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:0 40px;
+
+    background:rgba(5,5,5,.88);
+    backdrop-filter:blur(14px);
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+
+    transform:translateY(-100%);
+    opacity:0;
+
+    transition:.35s;
+
+    z-index:999;
+}
+
+.top-nav.visible{
+    transform:translateY(0);
+    opacity:1;
+}
+
+.nav-name{
+    font-size:22px;
+    font-weight:700;
+    letter-spacing:-1px;
+}
+
+.nav-links{
+    display:flex;
+    gap:35px;
+}
+
+.nav-links a{
+    color:white;
+    text-decoration:none;
+    font-size:15px;
+    transition:.25s;
+}
+
+.nav-links a:hover{
+    color:#00ffaa;
+}
+
+@media(max-width:800px){
+
+    .top-nav{
+        height:auto;
+        padding:16px 20px;
+        flex-direction:column;
+        gap:15px;
+    }
+
+    .nav-name{
+        font-size:20px;
+    }
+
+    .nav-links{
+        width:100%;
+        justify-content:center;
+        flex-wrap:wrap;
+        gap:18px;
+    }
+
+}
 
 /* HERO */
 
 .hero {
-    min-height: 100vh;
+    min-height: 70vh;
     display: flex;
     position: relative;
-    overflow: hidden;
-}
 
+}
 
 .side {
     width: 50%;
-    min-height: 100vh;
+    min-height: 70vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -49,12 +152,14 @@ body {
 }
 
 
-.side:hover {
+
+
+.hero:hover .side:hover {
     width: 60%;
 }
 
 
-.side:not(:hover) {
+.hero:hover .side:not(:hover) {
     width: 40%;
 }
 
@@ -77,6 +182,11 @@ body {
 }
 
 
+.side-box {
+    width: 50vw;
+    overflow: hidden;
+}
+
 .overlay {
     position:absolute;
     inset:0;
@@ -98,11 +208,7 @@ body {
 
 /* TEXT */
 
-h1 {
-    font-size: clamp(45px,5vw,80px);
-    margin:0;
-    letter-spacing:-3px;
-}
+
 
 
 h2 {
@@ -113,7 +219,7 @@ h2 {
 
 .subtitle {
     color:#aaa;
-    font-size:20px;
+    font-size:17px;
     max-width:450px;
     line-height:1.6;
 }
@@ -182,7 +288,7 @@ h2 {
 
 section {
     padding:80px 10%;
-    background:#080808;
+    background:rgba(8, 8, 8, 0.7);
 }
 
 
@@ -208,8 +314,30 @@ section {
 }
 
 
-.card h3 {
+.card a {
+    text-decoration: none;
+}
+
+.card a h3 {
     font-size:25px;
+    margin-top: 0;
+    text-decoration: none;
+    color: white;
+}
+
+
+.card img {
+    width: 100%;
+    height: auto;
+    transition: .3s ease all;
+}
+
+.card a:hover h3 {
+    color:rgba(164, 244, 255, 0.7)
+}
+
+.card a:hover img {
+    transform: scale(1.1)
 }
 
 
@@ -228,6 +356,7 @@ footer {
     padding:40px;
     text-align:center;
     color:#666;
+    background:rgba(8, 8, 8, 0.9);
 }
 
 
@@ -254,83 +383,92 @@ footer {
 
 }
 
+/* CONTACT */
+
+.contact-grid{
+
+    margin-top:50px;
+
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+
+    gap:25px;
+}
+
+.contact-item{
+
+    background:#111;
+
+    border:1px solid #222;
+
+    border-radius:18px;
+
+    padding:30px;
+}
+
+.contact-item h3{
+    margin-top:0;
+}
+
+.contact-item a{
+    color:#00ffaa;
+    text-decoration:none;
+}
+
+.contact-item a:hover{
+    text-decoration:underline;
+}
+
 </style>
 </head>
 
 
 <body>
 
+    <nav class="top-nav" id="topNav">
+    <div class="nav-name">Zsolt Várady</div>
+
+    <div class="nav-links">
+        <a href="#game-projects">Game Projects</a>
+        <a href="#web-projects">Web Projects</a>
+        <a href="#contact">Contact</a>
+    </div>
+</nav>
+
+<div class="header">
+    <h1>Zsolt Várady</h1>
+</div>
 
 <div class="hero">
+    <div class="side game">
+        <div class="overlay"></div>
+        <div class="side-box">
+            <h2>GAME DEVELOPMENT</h2>
+            <p class="subtitle">
+            Unity Developer · Technical Artist · Gameplay Programmer
+            <br>
+            8+ years creating interactive experiences,
+            systems, tools and polished gameplay.
+            </p>
+            <div class="badge">Unity · C# · URP · Editor Tools · Shaders · Level Design</div>
+            <div class="button">ENTER GAME WORLD →</div>
+        </div>
+    </div>
+    <div class="side web">
+        <div class="overlay"></div>
+        <div class="side-box">
+            <h2>WEB DEVELOPMENT</h2>
+            <p class="subtitle">
+            Frontend developer with 10+ years experience.
+            Building responsive interfaces and creative digital products.
+            </p>
+            <div class="badge">HTML · CSS · JavaScript · Photoshop ·  Angular ·  Git · SVN</div>
 
+            
 
-<div class="side game">
-
-<div class="overlay"></div>
-
-<h1>Zsolt<br>Várady</h1>
-
-<h2>GAME DEVELOPMENT</h2>
-
-<p class="subtitle">
-Unity Developer · Technical Artist · Gameplay Programmer
-<br><br>
-8+ years creating interactive experiences,
-systems, tools and polished gameplay.
-</p>
-
-<div class="badge">
-Unity · C# · URP · Tools · Shaders
-</div>
-
-<div class="button">
-ENTER GAME WORLD →
-</div>
-
-</div>
-
-
-
-<div class="side web">
-
-<div class="overlay"></div>
-
-
-<h1>WEB<br>DEV</h1>
-
-<h2>WEB DEVELOPMENT</h2>
-
-
-<p class="subtitle">
-Frontend developer with 10+ years experience.
-Building responsive interfaces and creative digital products.
-</p>
-
-
-<div class="badge">
-HTML · CSS · React · Angular
-</div>
-
-
-<div class="button">
-ENTER WEB WORLD →
-</div>
-
-
-</div>
-
-
-<div class="center">
-<!--
-<h3>CODE</h3>
-
-<span>+</span>
-
-<h3>CREATIVITY</h3>
--->
-</div>
-
-
+            <div class="button">ENTER WEB WORLD →</div>
+        </div>
+    </div>
 </div>
 
 
@@ -338,70 +476,161 @@ ENTER WEB WORLD →
 <section>
 
 
-<h2>Selected Game Projects</h2>
+<h2  id="game-projects">Game Projects</h2>
+<p class='subtitle'>
+    Commercial and independent projects from AA, indie and VR development.
+</p>
 
 
 <div class="cards">
 
 
 <div class="card">
-
-<h3>Retrospace</h3>
-
-<p>
-Unity / URP project.
-Gameplay programming,
-technical art, lighting,
-tools and optimization.
-</p>
-
-<div class="tags">
-<span>Unity</span>
-<span>C#</span>
-<span>URP</span>
-<span>Tools</span>
+    <a target="_blank" href="https://store.steampowered.com/app/2067820/RetroSpace/">
+        <h3>Retrospace</h3>
+        <img src="images/retrospace.jpg">
+    </a>
+    <p>
+    Unity / URP project.
+    Gameplay programming,
+    technical art, lighting,
+    tools and optimization.
+    </p>
+    <div class="tags">
+        <span>Unity</span>
+        <span>C#</span>
+        <span>URP</span>
+        <span>Tools</span>
+    </div>
 </div>
-
-</div>
-
-
 
 <div class="card">
-
-<h3>Chicken Police 2</h3>
-
-<p>
-Programming and pipeline
-support in a commercial
-game production environment.
-</p>
-
-<div class="tags">
-<span>Gameplay</span>
-<span>Editor Tools</span>
+    <a target="_blank" href="https://store.steampowered.com/app/2067820/RetroSpace/">
+        <h3>Moses & Plato</h3>
+        <img src="images/moses.jpg">
+    </a>
+    <p>
+    Programming and pipeline
+    support in a commercial
+    game production environment.
+    </p>
+    <div class="tags">
+        <span>Gameplay</span>
+        <span>Editor Tools</span>
+    </div>
 </div>
-
-</div>
-
-
 
 <div class="card">
-
-<h3>Neon Wings</h3>
-
-<p>
-Independent project.
-Gameplay systems,
-design and development.
-</p>
-
-<div class="tags">
-<span>Indie</span>
-<span>Game Design</span>
+    <a target="_blank" href="https://store.steampowered.com/app/1084640/Chicken_Police__Paint_it_RED/">
+        <h3>Chicken Police</h3>
+        <img src="images/cp2.jpg">
+    </a>
+    <p>
+    Programming and pipeline
+    support in a commercial
+    game production environment.
+    </p>
+    <div class="tags">
+        <span>Gameplay</span>
+        <span>Editor Tools</span>
+    </div>
 </div>
 
+<div class="card">
+    <a target="_blank" href="https://store.steampowered.com/app/2067820/RetroSpace/">
+        <h3>Neon Wings</h3>
+        <img src="images/neonwings.jpg">
+    </a>
+    <p>
+    Independent project.
+    Gameplay systems,
+    design and development.
+    </p>
+    <div class="tags">
+        <span>Indie</span>
+        <span>Game Design</span>
+    </div>
 </div>
 
+<div class="card">
+    <a target="_blank" href="https://store.steampowered.com/app/1086750/Flux_Caves/">
+        <h3>Flux Caves</h3>
+        <img src="images/flux.jpg">
+    </a>
+    <p>
+    Independent project.
+    Gameplay systems,
+    design and development.
+    </p>
+    <div class="tags">
+        <span>Indie</span>
+        <span>Game Design</span>
+    </div>
+</div>
+
+<div class="card">
+    <a target="_blank" href="https://store.steampowered.com/app/976780/NeonCode/">
+        <h3>NeonCode</h3>
+        <img src="images/neoncode.jpg">
+    </a>
+    <p>
+    Independent project.
+    Gameplay systems,
+    design and development.
+    </p>
+    <div class="tags">
+        <span>Indie</span>
+        <span>Game Design</span>
+    </div>
+</div>
+
+<div class="card">
+    <a target="_blank" href="https://hungame.blog/2018/03/27/towerland-vr/">
+        <h3>Towerland VR</h3>
+        <img src="images/towerland.jpg">
+    </a>
+    <p>
+    Independent project.
+    Gameplay systems,
+    design and development.
+    </p>
+    <div class="tags">
+        <span>Indie</span>
+        <span>Game Design</span>
+    </div>
+</div>
+
+<div class="card">
+    <a target="_blank" href="https://hungame.blog/2017/04/02/world-traveler-vr/">
+        <h3>World Traveler VR</h3>
+        <img src="images/worldtraveler.jpg">
+    </a>
+    <p>
+    Independent project.
+    Gameplay systems,
+    design and development.
+    </p>
+    <div class="tags">
+        <span>Indie</span>
+        <span>Game Design</span>
+    </div>
+</div>
+
+<div class="card">
+    <a target="_blank" href="https://hungame.blog/2017/04/25/pursued/">
+        <h3>Pursued</h3>
+        <img src="images/pursued.png">
+    </a>
+    <p>
+    Independent project.
+    Gameplay systems,
+    design and development.
+    </p>
+    <div class="tags">
+        <span>Indie</span>
+        <span>Game Design</span>
+    </div>
+</div>
 
 </div>
 
@@ -409,26 +638,162 @@ design and development.
 </section>
 
 
+
+
+
+
+
+
+<section id="web-projects">
+    <h2>Web Projects</h2>
+    <div class="cards">
+
+
+        <!-- Millicom Tigo -->
+        <div class="card">
+            <h3>Millicom Tigo</h3>
+            <img src="images/millicom.jpg">
+            <p class="description">Executed a complete website redesign, developed targeted landing pages, and created custom vanilla JavaScript carousels and sliders.</p>
+            <div class="tags"><span>Redesign</span><span>JavaScript</span><span>UI/UX</span></div>
+        </div>
+
+        <!-- Swiss Halley Fireflies -->
+        <div class="card">
+            <h3>Swiss Halley Fireflies</h3>
+            <img src="images/fireflies.jpg">
+            <p class="description">Handled all initial sitebuilding tasks, smooth UI animations, visual search functionality, and filter placeholders integrated into a Java environment.</p>
+            <div class="tags"><span>Sitebuild</span><span>Animations</span><span>Java</span></div>
+        </div>
+
+        <!-- Bónusz Brigád -->
+        <div class="card">
+            <h3>Bónusz Brigád</h3>
+            <img src="images/bonuszbrigad.jpg">
+            <p class="description">Contributed as a long-term core developer in a Java ecosystem, leading multiple design overhauls and crafting interactive JavaScript components and mini-games.</p>
+            <div class="tags"><span>Frontend</span><span>JavaScript</span><span>Java</span></div>
+        </div>
+
+        <!-- Syreon Research Institute -->
+        <div class="card">
+            <h3>Syreon Research Institute</h3>
+            <img src="images/syreon.jpg">
+            <p class="description">Maintained and updated the research institute's web application through frontend developments, while also delivering dedicated IT support services.</p>
+            <div class="tags"><span>Maintenance</span><span>Frontend</span><span>IT Support</span></div>
+        </div>
+
+        <!-- Síaréna Eplény -->
+        <div class="card">
+            <h3>Síaréna Eplény</h3>
+            <img src="images/siarena.jpg">
+            <p class="description">Delivered a full website redesign and brand refresh with modern frontend code, building Angular modules with placeholder content ready for API integration.</p>
+            <div class="tags"><span>Redesign</span><span>Angular</span><span>TypeScript</span></div>
+        </div>
+
+        <!-- Travel Team utazási iroda -->
+        <div class="card">
+            <h3>Travel Team utazási iroda</h3>
+            <img src="images/travelteam.jpg">
+            <p class="description">Performed several sitebuild iterations and crafted a new visual identity and UI design that has successfully stood the test of time for over a decade.</p>
+            <div class="tags"><span>UI Design</span><span>Sitebuild</span><span>Branding</span></div>
+        </div>
+
+        <!-- V4 Future Sport Festival -->
+        <div class="card">
+            <h3>V4 Future Sport Festival</h3>
+            <img src="images/v4.jpg">
+            <p class="description">Built the entire website frontend from scratch, modularized components using Angular, and added dynamic custom CSS animations.</p>
+            <div class="tags"><span>Angular</span><span>CSS3</span><span>Sitebuild</span></div>
+        </div>
+
+        <!-- Csodás Magyarország -->
+        <div class="card">
+            <h3>Csodás Magyarország</h3>
+            <img src="images/csodasmagyarorszag.jpg">
+            <p class="description">Translated complex Figma prototypes into clean sitebuild code and architected modular Angular components prepped for backend data.</p>
+            <div class="tags"><span>Figma</span><span>Angular</span><span>HTML5</span></div>
+        </div>
+
+        <!-- Világgazdaság -->
+        <div class="card">
+            <h3>Világgazdaság</h3>
+            <img src="images/vg.jpg">
+            <p class="description">Executed full sitebuild from pixel-perfect Figma designs, breaking the layout into structured Angular modules with temporary sample content.</p>
+            <div class="tags"><span>Figma</span><span>Angular</span><span>Frontend</span></div>
+        </div>
+
+        <!-- Magyar Turisztikai Ügynökség -->
+        <div class="card">
+            <h3>Magyar Turisztikai Ügynökség</h3>
+            <img src="images/mtu.jpg">
+            <p class="description">Implemented complete web layout based on InVision prototypes, creating modular Angular architecture populated with placeholder content.</p>
+            <div class="tags"><span>InVision</span><span>Angular</span><span>Sitebuild</span></div>
+        </div>
+
+        <!-- Virágos Magyarország -->
+        <div class="card">
+            <h3>Virágos Magyarország</h3>
+            <img src="images/viragosmagyarorszag.jpg">
+            <p class="description">Developed the entire sitebuild from provided InVision specs, structuring the layout into clean, reusable Angular modules for future API hooks.</p>
+            <div class="tags"><span>InVision</span><span>Angular</span><span>SCSS</span></div>
+        </div>
+
+        <!-- Magyar Fejlesztési Bank -->
+        <div class="card">
+            <h3>Magyar Fejlesztési Bank</h3>
+            <img src="images/mfb.jpg">
+            <p class="description">Built key sections of the corporate portal based on Figma designs and organized components into structured Angular modules.</p>
+            <div class="tags"><span>Figma</span><span>Angular</span><span>Component UI</span></div>
+        </div>
+    </div>
+</section>
 
 <section>
+    <h2>About</h2>
+    <p class="subtitle">
+        I started with web development and moved into game development,
+        where programming, visuals and design meet.
 
-
-<h2>About</h2>
-
-<p class="subtitle">
-
-I started with web development and moved into game development,
-where programming, visuals and design meet.
-
-Today I work between code and creativity:
-building gameplay, tools and technical solutions.
-
-</p>
-
-
+        Today I work between code and creativity:
+        building gameplay, tools and technical solutions.
+    </p>
 </section>
 
 
+<section><h2>HunGame.blog</h2><p class="subtitle">Founder and Lead Editor of Hungary's game development archive featuring interviews, technical articles, industry news and preservation of Hungarian game development history.</p></section>
+<section><h2>Made in Hungary Podcast</h2><p class="subtitle">Host of interviews with Hungarian game developers, studio founders and industry professionals.</p></section>
+<section><h2>Keyword Cloud</h2><div class="tags">
+<span>Unity</span><span>C#</span><span>Gameplay</span><span>Technical Art</span><span>Shaders</span><span>URP</span><span>HDRP</span><span>Lighting</span><span>Optimization</span><span>Editor Tools</span><span>Level Design</span><span>Greyboxing</span><span>ProBuilder</span><span>Steam</span><span>VR</span><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Angular</span><span>React</span><span>REST API</span><span>Git</span><span>SVN</span></div></section>
+
+<section id="contact">
+
+    <h2>Contact</h2>
+
+    <p class="subtitle">
+        Looking for a Unity developer, gameplay programmer,
+        technical artist or frontend developer?
+        Feel free to get in touch.
+    </p>
+
+    <div class="contact-grid">
+
+        <div class="contact-item">
+            <h3>Email</h3>
+            <a href="mailto:you@email.com">you@email.com</a>
+        </div>
+
+        <div class="contact-item">
+            <h3>LinkedIn</h3>
+            <a href="#">linkedin.com/in/...</a>
+        </div>
+
+        <div class="contact-item">
+            <h3>GitHub</h3>
+            <a href="#">github.com/fubenalvo</a>
+        </div>
+
+    </div>
+
+</section>
 
 <footer>
 
@@ -440,17 +805,35 @@ building gameplay, tools and technical solutions.
 
 <script>
 
-const sides=document.querySelectorAll(".side");
+const sides = document.querySelectorAll(".side");
 
-sides.forEach(side=>{
-    side.addEventListener("click",()=>{
-        if(side.classList.contains("game")){
-            alert("Game Development portfolio");
-        }
-        else{
-            alert("Web Development portfolio");
-        }
+sides.forEach(side => {
+    side.addEventListener("click", () => {
+
+        const target = side.classList.contains("game")
+            ? document.getElementById("game-projects")
+            : document.getElementById("web-projects");
+
+        target.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+
     });
+});
+
+const nav = document.getElementById("topNav");
+
+window.addEventListener("scroll", () => {
+
+
+    if(window.scrollY > 50){
+        nav.classList.add("visible");
+    }
+    else{
+        nav.classList.remove("visible");
+    }
+
 });
 
 
