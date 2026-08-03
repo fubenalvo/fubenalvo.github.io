@@ -1,1 +1,461 @@
-testing
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Zsolt Várady | Game Developer & Technical Artist</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    height: 100%;
+    font-family: "Inter", "Segoe UI", sans-serif;
+    background: #050505;
+    color: white;
+    overflow-x: hidden;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* HERO */
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+}
+
+
+.side {
+    width: 50%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 70px;
+    position: relative;
+    transition: 0.6s ease;
+    cursor: pointer;
+}
+
+
+.side:hover {
+    width: 60%;
+}
+
+
+.side:not(:hover) {
+    width: 40%;
+}
+
+
+.game {
+    background:
+        radial-gradient(circle at center,
+        rgba(0,255,170,0.15),
+        transparent 60%),
+        linear-gradient(135deg,#070707,#101820);
+}
+
+
+.web {
+    background:
+        radial-gradient(circle at center,
+        rgba(80,120,255,0.15),
+        transparent 60%),
+        linear-gradient(135deg,#111,#202020);
+}
+
+
+.overlay {
+    position:absolute;
+    inset:0;
+    background:
+    linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,0.03),
+        transparent
+    );
+    opacity:0;
+    transition:.5s;
+}
+
+.side:hover .overlay {
+    opacity:1;
+}
+
+
+/* TEXT */
+
+h1 {
+    font-size: clamp(45px,5vw,80px);
+    margin:0;
+    letter-spacing:-3px;
+}
+
+
+h2 {
+    font-size:36px;
+    margin:20px 0;
+}
+
+
+.subtitle {
+    color:#aaa;
+    font-size:20px;
+    max-width:450px;
+    line-height:1.6;
+}
+
+
+.badge {
+    margin-top:30px;
+    display:inline-block;
+    border:1px solid #444;
+    padding:10px 18px;
+    border-radius:30px;
+    width:max-content;
+    color:#ddd;
+}
+
+
+.button {
+    margin-top:40px;
+    padding:15px 30px;
+    border-radius:40px;
+    width:max-content;
+    border:1px solid #555;
+    transition:.3s;
+}
+
+
+.game:hover .button {
+    background:#00ffaa;
+    color:#000;
+}
+
+
+.web:hover .button {
+    background:#5577ff;
+    color:white;
+}
+
+
+/* CENTER */
+
+.center {
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    z-index:5;
+    text-align:center;
+    pointer-events:none;
+}
+
+
+.center h3 {
+    margin:0;
+    font-size:22px;
+    letter-spacing:5px;
+    color:#888;
+}
+
+
+.center span {
+    font-size:60px;
+}
+
+
+/* SECTIONS */
+
+section {
+    padding:80px 10%;
+    background:#080808;
+}
+
+
+.cards {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;
+}
+
+
+.card {
+    background:#111;
+    border:1px solid #222;
+    padding:30px;
+    border-radius:20px;
+    transition:.3s;
+}
+
+
+.card:hover {
+    transform:translateY(-10px);
+    border-color:#555;
+}
+
+
+.card h3 {
+    font-size:25px;
+}
+
+
+.tags span {
+    display:inline-block;
+    margin:5px;
+    padding:6px 12px;
+    border-radius:20px;
+    background:#222;
+    color:#bbb;
+    font-size:13px;
+}
+
+
+footer {
+    padding:40px;
+    text-align:center;
+    color:#666;
+}
+
+
+
+/* MOBILE */
+
+@media(max-width:800px){
+
+.hero {
+    flex-direction:column;
+}
+
+.side,
+.side:hover,
+.side:not(:hover){
+    width:100%;
+    min-height:50vh;
+    padding:40px;
+}
+
+.center {
+    display:none;
+}
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<div class="hero">
+
+
+<div class="side game">
+
+<div class="overlay"></div>
+
+<h1>Zsolt<br>Várady</h1>
+
+<h2>GAME DEVELOPMENT</h2>
+
+<p class="subtitle">
+Unity Developer · Technical Artist · Gameplay Programmer
+<br><br>
+8+ years creating interactive experiences,
+systems, tools and polished gameplay.
+</p>
+
+<div class="badge">
+Unity · C# · URP · Tools · Shaders
+</div>
+
+<div class="button">
+ENTER GAME WORLD →
+</div>
+
+</div>
+
+
+
+<div class="side web">
+
+<div class="overlay"></div>
+
+
+<h1>WEB<br>DEV</h1>
+
+<h2>WEB DEVELOPMENT</h2>
+
+
+<p class="subtitle">
+Frontend developer with 10+ years experience.
+Building responsive interfaces and creative digital products.
+</p>
+
+
+<div class="badge">
+HTML · CSS · React · Angular
+</div>
+
+
+<div class="button">
+ENTER WEB WORLD →
+</div>
+
+
+</div>
+
+
+<div class="center">
+<!--
+<h3>CODE</h3>
+
+<span>+</span>
+
+<h3>CREATIVITY</h3>
+-->
+</div>
+
+
+</div>
+
+
+
+<section>
+
+
+<h2>Selected Game Projects</h2>
+
+
+<div class="cards">
+
+
+<div class="card">
+
+<h3>Retrospace</h3>
+
+<p>
+Unity / URP project.
+Gameplay programming,
+technical art, lighting,
+tools and optimization.
+</p>
+
+<div class="tags">
+<span>Unity</span>
+<span>C#</span>
+<span>URP</span>
+<span>Tools</span>
+</div>
+
+</div>
+
+
+
+<div class="card">
+
+<h3>Chicken Police 2</h3>
+
+<p>
+Programming and pipeline
+support in a commercial
+game production environment.
+</p>
+
+<div class="tags">
+<span>Gameplay</span>
+<span>Editor Tools</span>
+</div>
+
+</div>
+
+
+
+<div class="card">
+
+<h3>Neon Wings</h3>
+
+<p>
+Independent project.
+Gameplay systems,
+design and development.
+</p>
+
+<div class="tags">
+<span>Indie</span>
+<span>Game Design</span>
+</div>
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+<section>
+
+
+<h2>About</h2>
+
+<p class="subtitle">
+
+I started with web development and moved into game development,
+where programming, visuals and design meet.
+
+Today I work between code and creativity:
+building gameplay, tools and technical solutions.
+
+</p>
+
+
+</section>
+
+
+
+<footer>
+
+© 2026 Zsolt Várady
+
+</footer>
+
+
+
+<script>
+
+const sides=document.querySelectorAll(".side");
+
+sides.forEach(side=>{
+    side.addEventListener("click",()=>{
+        if(side.classList.contains("game")){
+            alert("Game Development portfolio");
+        }
+        else{
+            alert("Web Development portfolio");
+        }
+    });
+});
+
+
+</script>
+
+
+</body>
+</html>
