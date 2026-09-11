@@ -147,12 +147,12 @@ body {
 @media(min-width:800px){
 
     .hero:hover .side:hover {
-        width: 60%;
+        width: 51%;
     }
 
 
     .hero:hover .side:not(:hover) {
-        width: 40%;
+        width: 49%;
     }
 
 }
@@ -300,6 +300,10 @@ h2 {
 section {
     padding:80px 10%;
     background:rgba(8, 8, 8, 0.7);
+}
+
+section.section-short {
+    padding-bottom: 0;
 }
 
 
@@ -460,7 +464,7 @@ footer {
             systems, tools and polished gameplay.
             </p>
             <div class="badge">Unity · C# · URP · Editor Tools · Shaders · Level Design</div>
-            <div class="button">ENTER GAME WORLD →</div>
+            <div class="button">Game dev references →</div>
         </div>
     </div>
     <div class="side web">
@@ -471,21 +475,21 @@ footer {
             Frontend developer with 10+ years experience.
             Building responsive interfaces and creative digital products.
             </p>
-            <div class="badge">HTML · CSS · JavaScript · Photoshop ·  Angular ·  Git · SVN</div>
-
-            
-
-            <div class="button">ENTER WEB WORLD →</div>
+            <div class="badge">HTML/CSS · React · JavaScript · Photoshop · Angular ·  Git</div>
+            <div class="button">Frontend references →</div>
         </div>
     </div>
 </header>
 
 
 
+
+<section class="section-short" id="game-projects"><h2>Game development skills</h2><div class="tags">
+<span>Unity</span><span>C#</span><span>Gameplay</span><span>Technical Art</span><span>Shaders</span><span>URP</span><span>HDRP</span><span>Lighting</span><span>Optimization</span><span>Editor Tools</span><span>Level Design</span><span>Greyboxing</span><span>ProBuilder</span><span>Steam</span><span>VR</span>
+</div></section>
+
 <section>
-
-
-<h2  id="game-projects">Game Projects</h2>
+<h2>Game Projects</h2>
 <p class='subtitle'>
     Commercial and independent projects from AA, indie and VR development.
 </p>
@@ -507,9 +511,11 @@ footer {
     </p>
     <div class="tags">
         <span>Unity</span>
-        <span>C#</span>
-        <span>URP</span>
-        <span>Tools</span>
+        <span>Lighting</span>
+        <span>URP Technical Art</span>
+        <span>Game Design</span>
+        <span>Level Design</span>
+        <span>Programming</span>        
     </div>
 </div>
 
@@ -526,6 +532,7 @@ footer {
     <div class="tags">
         <span>Gameplay</span>
         <span>Editor Tools</span>
+        <span>Prototypes</span>
     </div>
 </div>
 
@@ -542,6 +549,7 @@ footer {
     <div class="tags">
         <span>Gameplay</span>
         <span>Editor Tools</span>
+        <span>Prototypes</span>
     </div>
 </div>
 
@@ -556,8 +564,11 @@ footer {
     design and development.
     </p>
     <div class="tags">
-        <span>Indie</span>
+        <span>Lighting</span>
+        <span>Technical Art</span>
         <span>Game Design</span>
+        <span>Level Design</span>
+        <span>Programming</span>
     </div>
 </div>
 
@@ -572,8 +583,11 @@ footer {
     design and development.
     </p>
     <div class="tags">
-        <span>Indie</span>
+        <span>Lighting</span>
+        <span>Technical Art</span>
         <span>Game Design</span>
+        <span>Level Design</span>
+        <span>Programming</span>
     </div>
 </div>
 
@@ -588,8 +602,11 @@ footer {
     design and development.
     </p>
     <div class="tags">
-        <span>Indie</span>
+        <span>Programming</span>
+        <span>Lighting</span>
+        <span>Technical Art</span>
         <span>Game Design</span>
+        <span>Level Design</span>
     </div>
 </div>
 
@@ -604,8 +621,10 @@ footer {
     design and development.
     </p>
     <div class="tags">
-        <span>Indie</span>
+        <span>Performance</span>
+        <span>Technical Art</span>
         <span>Game Design</span>
+        <span>Programming</span>
     </div>
 </div>
 
@@ -646,14 +665,11 @@ footer {
 
 </section>
 
+<section class="section-short" id="web-projects"><h2>Web development skills</h2><div class="tags">
+<span>Angular</span><span>React</span><span>HTML</span><span>CSS</span><span>JavaScript</span><span>REST API</span><span>Git</span><span>SVN</span><span>Photoshop</span>
+</div></section>
 
-
-
-
-
-
-
-<section id="web-projects">
+<section>
     <h2>Web Projects</h2>
     <div class="cards">
 
@@ -666,12 +682,20 @@ footer {
             <div class="tags"><span>Redesign</span><span>JavaScript</span><span>UI/UX</span></div>
         </div>
 
+        <!-- Szerencsekerék -->
+        <div class="card">
+            <h3>Wheel of Fortune</h3>
+            <img src="images/szerencsekerek.jpg">
+            <p class="description">Full-stack browser game developed with React, REST API and MongoDB. A remake of a 90s DOS game.</p>
+            <div class="tags"><span>React</span><span>MongoDB</span><span>REST API</span><span>Full-stack</span></div>
+        </div>
+
         <!-- Swiss Halley Fireflies -->
         <div class="card">
             <h3>Swiss Halley Fireflies</h3>
             <img src="images/fireflies.jpg">
             <p class="description">Handled all initial sitebuilding tasks, smooth UI animations, visual search functionality, and filter placeholders integrated into a Java environment.</p>
-            <div class="tags"><span>Sitebuild</span><span>Animations</span><span>Java</span></div>
+            <div class="tags"><span>Sitebuild</span><span>Animations</span><span>Javascript</span></div>
         </div>
 
         <!-- Bónusz Brigád -->
@@ -679,7 +703,7 @@ footer {
             <h3>Bónusz Brigád</h3>
             <img src="images/bonuszbrigad.jpg">
             <p class="description">Contributed as a long-term core developer in a Java ecosystem, leading multiple design overhauls and crafting interactive JavaScript components and mini-games.</p>
-            <div class="tags"><span>Frontend</span><span>JavaScript</span><span>Java</span></div>
+            <div class="tags"><span>Frontend</span><span>JavaScript</span><span>Java environment</span></div>
         </div>
 
         <!-- Syreon Research Institute -->
@@ -769,8 +793,9 @@ footer {
 
 <section><h2>HunGame.blog</h2><p class="subtitle">Founder and Lead Editor of Hungary's game development archive featuring interviews, technical articles, industry news and preservation of Hungarian game development history.</p></section>
 <section><h2>Made in Hungary Podcast</h2><p class="subtitle">Host of interviews with Hungarian game developers, studio founders and industry professionals.</p></section>
-<section><h2>Keyword Cloud</h2><div class="tags">
-<span>Unity</span><span>C#</span><span>Gameplay</span><span>Technical Art</span><span>Shaders</span><span>URP</span><span>HDRP</span><span>Lighting</span><span>Optimization</span><span>Editor Tools</span><span>Level Design</span><span>Greyboxing</span><span>ProBuilder</span><span>Steam</span><span>VR</span><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Angular</span><span>React</span><span>REST API</span><span>Git</span><span>SVN</span></div></section>
+
+
+
 
 <section id="contact">
 
